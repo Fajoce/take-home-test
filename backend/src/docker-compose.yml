@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: loan-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "YourStrong@Pass123"
+    ports:
+      - "1433:1433"
+
+  api:
+    build:
+      context: ./Fundo.Applications.WebApi
+      dockerfile: Dockerfile
+    container_name: loan-api
+    ports:
+      - "5000:80"
+    depends_on:
+      - sqlserver
