@@ -75,6 +75,27 @@ Develop a **lightweight Angular app** to interact with the backend
 ✔ **Testing coverage** (unit tests for critical backend functions).
 
 ✔ **Basic DevOps implementation** (Docker for backend).
+✔ REST API (.NET 6)
+
+✔ Entity Framework Core
+
+✔ SQL Server
+
+✔ Swagger
+
+✔ Unit Tests (xUnit)
+
+✔ Docker
+
+✔ Docker Compose
+
+✔ Structured Logging
+
+✔ Global Exception Handling
+
+✔ JWT Authentication
+
+✔ GitHub Actions CI
 
 ---
 
