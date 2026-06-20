@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace Fundo.Applications.WebApi
 {
@@ -21,29 +22,54 @@ namespace Fundo.Applications.WebApi
         {
             services.AddControllers();
             services.AddDbContext<LoanDbContext>(options =>
-               options.UseSqlServer(
-                   _configuration.GetConnectionString("DefaultConnection")
-               )
-           );
+     options.UseSqlServer(
+         _configuration.GetConnectionString("DefaultConnection"),
+         sql =>
+         {
+             sql.EnableRetryOnFailure(
+                 maxRetryCount: 5,
+                 maxRetryDelay: TimeSpan.FromSeconds(10),
+                 errorNumbersToAdd: null);
+         }));
 
             services.AddScoped<ILoanService, LoanService>();
 
             services.AddSwaggerGen();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Angular",
+                    builder =>
+                    {
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
         }
 
         public void Configure(
     IApplicationBuilder app,
     IWebHostEnvironment env)
         {
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<LoanDbContext>();
+
+                context.Database.Migrate();
+            }
+
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Loan API V1");
             });
-            app.UseMiddleware<ExceptionMiddleware>();
-            app.UseRouting();
 
+            app.UseMiddleware<ExceptionMiddleware>();
+
+            app.UseRouting();
+            app.UseCors("Angular");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
