@@ -43,7 +43,7 @@ namespace Fundo.Applications.WebApi
                 },
                 new Loan
                 {
-                    Id = 3,
+                    Id = 4,
                     Amount = 50000,
                     CurrentBalance = 32500,
                     ApplicantName = "Grego Charris",
@@ -51,7 +51,7 @@ namespace Fundo.Applications.WebApi
                 },
                 new Loan
                 {
-                    Id = 3,
+                    Id = 5,
                     Amount = 50000,
                     CurrentBalance = 32500,
                     ApplicantName = "Jocelyn Ortiz",
