@@ -23,8 +23,13 @@ namespace Fundo.Applications.WebApi.Controllers
         [HttpPost("login")]
         public IActionResult Login(LoginRequest request)
         {
-            if (request.Username != "admin"
-                || request.Password != "123456")
+            var configuredUser =
+    _configuration["Authentication:Username"];
+
+            var configuredPassword =
+                _configuration["Authentication:Password"];
+            if (request.Username != configuredUser ||
+    request.Password != configuredPassword)
             {
                 return Unauthorized();
             }
