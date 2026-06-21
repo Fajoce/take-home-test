@@ -7,7 +7,14 @@
   </mat-card-header>
 
   <mat-card-content>
+<div *ngIf="loading" class="loading-container">
 
+  <mat-spinner diameter="60"></mat-spinner>
+
+  <p>Cargando préstamos...</p>
+
+</div>
+<div *ngIf="!loading">
     <table
       mat-table
       [dataSource]="loans"
@@ -72,7 +79,7 @@
       </tr>
 
     </table>
-
+</div>
   </mat-card-content>
 
 </mat-card>

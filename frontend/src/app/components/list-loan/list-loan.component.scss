@@ -1,27 +1,13 @@
-.container {
-  width: 80%;
-  margin: 30px auto;
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  gap: 15px;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-}
-
-th,
-td {
-  padding: 18px;
-  text-align: left;
-  border: 1px solid #ddd;
-}
-
-th {
+.loading-container p {
   color: #666;
-  font-weight: 600;
+  font-size: 14px;
 }
