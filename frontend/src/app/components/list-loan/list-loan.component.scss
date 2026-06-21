@@ -11,3 +11,40 @@
   color: #666;
   font-size: 14px;
 }
+.title-center {
+  width: 100%;
+  text-align: center;
+}
+mat-card {
+  margin: 30px;
+}
+
+.loans-table {
+  width: 100%;
+}
+
+/* Encabezado */
+.mat-mdc-header-row {
+  background-color: #1976d2;
+}
+
+.mat-mdc-header-cell {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Filas */
+.mat-mdc-row:nth-child(even) {
+  background-color: #f5f7fa;
+}
+
+.mat-mdc-row:hover {
+  background-color: #e3f2fd;
+  cursor: pointer;
+}
+
+/* Celdas */
+.mat-mdc-cell {
+  color: #333;
+}
