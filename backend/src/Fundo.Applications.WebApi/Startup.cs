@@ -7,6 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Fundo.Applications.WebApi
 {
@@ -33,7 +36,23 @@ namespace Fundo.Applications.WebApi
          }));
 
             services.AddScoped<ILoanService, LoanService>();
-
+            services.AddAuthentication(
+    JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters =
+            new TokenValidationParameters
+            {
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey =
+                    new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(
+                            _configuration["Jwt:Key"]))
+            };
+    });
             services.AddSwaggerGen();
             services.AddCors(options =>
             {
@@ -70,6 +89,8 @@ namespace Fundo.Applications.WebApi
 
             app.UseRouting();
             app.UseCors("Angular");
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
