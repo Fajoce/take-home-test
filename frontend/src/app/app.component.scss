@@ -1,32 +1,27 @@
-.loans {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.container {
+  width: 80%;
+  margin: 30px auto;
+}
+
+h1 {
   text-align: center;
-  padding: 20px;
-
-  &--container {
-    width: 60%;
-  }
+  margin-bottom: 30px;
 }
 
-.mdc-data-table {
-  &__table {
-    margin-top: 20px;
-    border: 1px solid #dee5ed;
-    border-radius: 4px;
-  }
-
-  &__header-cell {
-    color: #7b8187;
-  }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
 }
 
-@media (max-width: 992px) {
-  .loans {
-    &--container {
-      width: 100%;
-    }
-  }
+th,
+td {
+  padding: 18px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  color: #666;
+  font-weight: 600;
 }
