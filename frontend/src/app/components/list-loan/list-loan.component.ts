@@ -1,16 +1,34 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
+
 import { Loan } from '../../models/loan';
 import { LoanService } from '../../services/loan-service';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-list-loan',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatCardModule,
+    MatChipsModule
+  ],
   templateUrl: './list-loan.component.html',
-  styleUrl: './list-loan.component.scss'
+  styleUrls: ['./list-loan.component.scss']
 })
 export class ListLoanComponent {
-loans: Loan[] = [];
+
+  displayedColumns: string[] = [
+    'amount',
+    'currentBalance',
+    'applicantName',
+    'status'
+  ];
+
+  loans: Loan[] = [];
 
   constructor(
     private loanService: LoanService
@@ -30,7 +48,8 @@ loans: Loan[] = [];
       }
     });
   }
+
   getStatus(status: number): string {
-  return status === 0 ? 'Activo' : 'Pagado';
-}
+    return status === 0 ? 'Activo' : 'Pagado';
+  }
 }

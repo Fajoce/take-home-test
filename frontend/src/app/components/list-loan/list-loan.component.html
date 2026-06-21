@@ -1,38 +1,78 @@
-<div class="container">
+<mat-card>
 
-  <h1>Gestión de préstamos</h1>
+  <mat-card-header>
+    <mat-card-title>
+      Gestión de Préstamos
+    </mat-card-title>
+  </mat-card-header>
 
-  <table>
+  <mat-card-content>
 
-    <thead>
-      <tr>
-        <th>Monto del préstamo</th>
-        <th>Saldo actual</th>
-        <th>Solicitante</th>
-        <th>Estado</th>
-      </tr>
-    </thead>
+    <table
+      mat-table
+      [dataSource]="loans"
+      class="mat-elevation-z8 loans-table">
 
-    <tbody>
-      <tr *ngFor="let loan of loans">
+      <!-- Monto -->
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>
+          Monto
+        </th>
 
-        <td>
+        <td mat-cell *matCellDef="let loan">
           {{ loan.amount | currency }}
         </td>
+      </ng-container>
 
-        <td>
+      <!-- Saldo -->
+      <ng-container matColumnDef="currentBalance">
+        <th mat-header-cell *matHeaderCellDef>
+          Saldo Actual
+        </th>
+
+        <td mat-cell *matCellDef="let loan">
           {{ loan.currentBalance | currency }}
         </td>
+      </ng-container>
 
-        <td>
+      <!-- Solicitante -->
+      <ng-container matColumnDef="applicantName">
+        <th mat-header-cell *matHeaderCellDef>
+          Solicitante
+        </th>
+
+        <td mat-cell *matCellDef="let loan">
           {{ loan.applicantName }}
-        </td>  
-        <td>
-  {{ getStatus(loan.status) }}
-</td>     
+        </td>
+      </ng-container>
+
+      <!-- Estado -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>
+          Estado
+        </th>
+
+        <td mat-cell *matCellDef="let loan">
+
+          <mat-chip>
+            {{ getStatus(loan.status) }}
+          </mat-chip>
+
+        </td>
+      </ng-container>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns">
       </tr>
-    </tbody>
 
-  </table>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns">
+      </tr>
 
-</div>
+    </table>
+
+  </mat-card-content>
+
+</mat-card>
