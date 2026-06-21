@@ -178,6 +178,7 @@ La canalización realiza:
 
 ---
  ### Angular:
+ # Lo trabaje dentro del mismo repositorio
   <img width="704" height="544" alt="image" src="https://github.com/user-attachments/assets/0a04b42c-f582-48a8-bb4f-14cf3fe4524b" />
   
  # user: admin
