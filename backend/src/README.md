@@ -22,6 +22,15 @@ Aplicación para la gestión de préstamos desarrollada con ASP.NET Core 6, Enti
 ### DevOps
 
 * Docker
+
+  ### Angular:
+  <img width="704" height="544" alt="image" src="https://github.com/user-attachments/assets/0a04b42c-f582-48a8-bb4f-14cf3fe4524b" />
+  user: admin
+  password: 12456
+
+  <img width="899" height="626" alt="image" src="https://github.com/user-attachments/assets/212ee9a9-cf4c-4aa3-a2cb-66c0d1078a68" />
+
+
 * Docker Compose
 * GitHub Actions
 
