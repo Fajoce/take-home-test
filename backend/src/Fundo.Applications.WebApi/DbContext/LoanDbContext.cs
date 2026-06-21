@@ -39,21 +39,21 @@ namespace Fundo.Applications.WebApi
                     Amount = 50000,
                     CurrentBalance = 32500,
                     ApplicantName = "Nicolle Ortiz",
-                    Status = LoanStatus.Paid
+                    Status = LoanStatus.Active
                 },
                 new Loan
                 {
                     Id = 4,
-                    Amount = 50000,
-                    CurrentBalance = 32500,
+                    Amount = 670000,
+                    CurrentBalance = 0,
                     ApplicantName = "Grego Charris",
                     Status = LoanStatus.Paid
                 },
                 new Loan
                 {
                     Id = 5,
-                    Amount = 50000,
-                    CurrentBalance = 32500,
+                    Amount = 560000,
+                    CurrentBalance = 0,
                     ApplicantName = "Jocelyn Ortiz",
                     Status = LoanStatus.Paid
                 }
