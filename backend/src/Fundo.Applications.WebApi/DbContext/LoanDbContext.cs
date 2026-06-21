@@ -20,7 +20,7 @@ namespace Fundo.Applications.WebApi
                     Id = 1,
                     Amount = 25000,
                     CurrentBalance = 18750,
-                    ApplicantName = "Juan Doe",
+                    ApplicantName = "Fabio Ortiz",
                     Status = LoanStatus.Active
                 },
 
@@ -29,7 +29,7 @@ namespace Fundo.Applications.WebApi
                     Id = 2,
                     Amount = 15000,
                     CurrentBalance = 0,
-                    ApplicantName = "Fulana",
+                    ApplicantName = "Johana Gonzalz",
                     Status = LoanStatus.Paid
                 },
 
@@ -38,7 +38,23 @@ namespace Fundo.Applications.WebApi
                     Id = 3,
                     Amount = 50000,
                     CurrentBalance = 32500,
-                    ApplicantName = "Robert Johnson",
+                    ApplicantName = "Nicolle Ortiz",
+                    Status = LoanStatus.Paid
+                },
+                new Loan
+                {
+                    Id = 3,
+                    Amount = 50000,
+                    CurrentBalance = 32500,
+                    ApplicantName = "Grego Charris",
+                    Status = LoanStatus.Paid
+                },
+                new Loan
+                {
+                    Id = 3,
+                    Amount = 50000,
+                    CurrentBalance = 32500,
+                    ApplicantName = "Jocelyn Ortiz",
                     Status = LoanStatus.Paid
                 }
             );
