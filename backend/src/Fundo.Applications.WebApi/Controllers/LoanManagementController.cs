@@ -1,12 +1,15 @@
 ﻿using Fundo.Applications.WebApi.DTOs;
 using Fundo.Applications.WebApi.Entities;
 using Fundo.Applications.WebApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Fundo.Applications.WebApi.Controllers
 {
+    [Authorize]
+    [ApiController]
     [Route("loan")]
     public class LoanManagementController : Controller
     {
