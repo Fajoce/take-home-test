@@ -6,49 +6,15 @@ import { RouterModule } from '@angular/router';
 import { LoanService } from './services/loan-service';
 import { Loan } from './models/loan';
 import { ListLoanComponent } from "./components/list-loan/list-loan.component";
+import { LoginComponentComponent } from './components/login-component/login-component.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatButtonModule, RouterModule, ListLoanComponent],
+  imports: [CommonModule, MatTableModule, MatButtonModule, RouterModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
- displayedColumns = [
-  'amount',
-  'currentBalance',
-  'applicantName',
-  'status'
-];
-
-  loans: Loan[] = [];
-
-  constructor(
-    private loanService: LoanService
-  ) {}
-
-  ngOnInit(): void {
-    this.loadLoans();
-  }
-
-  loadLoans(): void {
-
-    this.loanService
-      .getAll()
-      .subscribe({
-        next: (response) => {
-          this.loans = response;
-        },
-        error: (error) => {
-          console.error(
-            'Error loading loans',
-            error
-          );
-        }
-      });
-  }
-    getStatus(status: number): string {
-  return status === 0 ? 'Activo' : 'Pagado';
-}
+ 
 }
