@@ -185,6 +185,19 @@ La canalización realiza:
   <img width="899" height="626" alt="image" src="https://github.com/user-attachments/assets/212ee9a9-cf4c-4aa3-a2cb-66c0d1078a68" />
 # Autor
 Fabio Ortiz Charris
+Informacion Adicional: 
+Con mas tiempo hubiese adicionado:
+- Todas las entidades relacionadas con el core bancario
+- Patron  diseño Result
+- Agregar bibliotecas de clases para las capas  de dominio, Aplicacion, Infraestructura.
+- Patron  diseño CQRS
+- Enfoque DDD
+- Patron  diseño Polly + Retry
+- Fluent Validations
+En el front:
+- Control  de estado NGRX
+- CRUD
+- Formularios Reactivos
 
 
 
