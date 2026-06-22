@@ -183,7 +183,7 @@ La canalización realiza:
   
  # user: admin
  # password: 123456
- <img width="1333" height="676" alt="image" src="https://github.com/user-attachments/assets/1ae7e564-5e16-4269-aa0e-caf5e446a760" />
+<img width="1336" height="671" alt="image" src="https://github.com/user-attachments/assets/4f8ea60d-7f16-43b2-959b-d5fe8911e225" />
 
 # Autor
 Fabio Ortiz Charris
@@ -192,7 +192,7 @@ Fabio Ortiz Charris
 Con mas tiempo hubiese adicionado:
 - Todas las entidades relacionadas con el core bancario
 - Patron  diseño Result
-- Agregar bibliotecas de clases para las capas  de dominio, Aplicacion, Infraestructura.
+- Agregar bibliotecas de clases para las capas  de dominio, Aplicacion, Infraestructura.(clean Arhitecture)
 - Patron  diseño CQRS (Separar operaciones Lecturas/Esritura)
 - Enfoque DDD
 - Event Driven
