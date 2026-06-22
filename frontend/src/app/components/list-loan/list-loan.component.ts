@@ -1,23 +1,39 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChild
+} from '@angular/core';
+
 import { CommonModule } from '@angular/common';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { RouterModule } from '@angular/router';
+
+import {
+  MatTableDataSource,
+  MatTableModule
+} from '@angular/material/table';
+
+import {
+  MatPaginator,
+  MatPaginatorModule
+} from '@angular/material/paginator';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 import { Loan } from '../../models/loan';
 import { LoanService } from '../../services/loan-service';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-list-loan',
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     MatTableModule,
     MatCardModule,
     MatChipsModule,
@@ -25,13 +41,14 @@ import { MatIconModule } from '@angular/material/icon';
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
-    RouterModule,
     MatIconModule
   ],
   templateUrl: './list-loan.component.html',
-  styleUrls: ['./list-loan.component.scss'],
+  styleUrls: ['./list-loan.component.scss']
 })
-export class ListLoanComponent implements OnInit {
+export class ListLoanComponent
+  implements OnInit, AfterViewInit {
+
   loading = true;
 
   displayedColumns: string[] = [
@@ -44,44 +61,81 @@ export class ListLoanComponent implements OnInit {
     'actions'
   ];
 
-  dataSource = new MatTableDataSource<Loan>([]);
+  dataSource =
+    new MatTableDataSource<Loan>([]);
 
-  constructor(private loanService: LoanService) {}
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
+
+  constructor(
+    private loanService: LoanService
+  ) {}
 
   ngOnInit(): void {
     this.loadLoans();
   }
 
+  ngAfterViewInit(): void {
+    this.dataSource.paginator =
+      this.paginator;
+  }
+
   loadLoans(): void {
-  this.loading = true;
-  this.loanService.getAll().subscribe({
-    next: (response) => {
-      setTimeout(() => {
-        this.dataSource.data = response;
-        this.dataSource.paginator =
-          this.paginator;
-        this.loading = false;
-      }, 1000);
-    },
-    error: (error) => {
-      console.error(error);
-      this.loading = false;
+
+    this.loading = true;
+
+    this.loanService
+      .getAll()
+      .subscribe({
+
+        next: (response) => {
+
+          setTimeout(() => {
+
+            this.dataSource.data =
+              response;
+
+            this.loading = false;
+
+          }, 1000);
+
+        },
+
+        error: (error) => {
+
+          console.error(error);
+
+          this.loading = false;
+
+        }
+
+      });
+
+  }
+
+  applyFilter(event: Event): void {
+
+    const filterValue =
+      (event.target as HTMLInputElement)
+        .value;
+
+    this.dataSource.filter =
+      filterValue
+        .trim()
+        .toLowerCase();
+
+    if (this.dataSource.paginator) {
+
+      this.dataSource
+        .paginator
+        .firstPage();
+
     }
-  });
-}
-applyFilter(event: Event): void {
+  }
 
-  const filterValue =
-    (event.target as HTMLInputElement)
-      .value;
-
-  this.dataSource.filter =
-    filterValue.trim().toLowerCase();
-
-}
   getStatus(status: number): string {
-    return status === 0 ? 'Activo' : 'Pagado';
+    return status === 0
+      ? 'Activo'
+      : 'Pagado';
   }
 }
