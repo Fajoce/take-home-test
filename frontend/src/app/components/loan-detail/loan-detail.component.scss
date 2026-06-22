@@ -1,0 +1,53 @@
+.loan-card {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.loan-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.value {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.success {
+  color: #2e7d32;
+}
+
+.warning {
+  color: #ef6c00;
+}
+
+.progress-text {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.active-chip {
+  background: #4caf50 !important;
+  color: white !important;
+}
+
+.paid-chip {
+  background: #f44336 !important;
+  color: white !important;
+}

@@ -10,6 +10,7 @@ import { Loan } from '../../models/loan';
 import { LoanService } from '../../services/loan-service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-list-loan',
@@ -22,7 +23,8 @@ import { MatInputModule } from '@angular/material/input';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    RouterModule
   ],
   templateUrl: './list-loan.component.html',
   styleUrls: ['./list-loan.component.scss'],
@@ -37,6 +39,7 @@ export class ListLoanComponent implements OnInit {
     'currentBalance',
     'applicantName',
     'status',
+    'actions'
   ];
 
   dataSource = new MatTableDataSource<Loan>([]);

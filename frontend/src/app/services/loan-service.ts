@@ -17,4 +17,11 @@ export class LoanService {
   getAll(): Observable<Loan[]> {
     return this.http.get<Loan[]>(this.apiUrl);
   }
+  getById(id: number): Observable<Loan> {
+
+  return this.http.get<Loan>(
+    `${this.apiUrl}/${id}`
+  );
+
+}
 }
