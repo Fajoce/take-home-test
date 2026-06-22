@@ -11,6 +11,7 @@ import { LoanService } from '../../services/loan-service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-list-loan',
@@ -24,7 +25,8 @@ import { RouterModule } from '@angular/router';
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
-    RouterModule
+    RouterModule,
+    MatIconModule
   ],
   templateUrl: './list-loan.component.html',
   styleUrls: ['./list-loan.component.scss'],

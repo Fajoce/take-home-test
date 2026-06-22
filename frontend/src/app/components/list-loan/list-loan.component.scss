@@ -48,3 +48,25 @@ mat-card {
 .mat-mdc-cell {
   color: #333;
 }
+.actions-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.btn-create {
+  background-color: #2e7d32 !important;
+  color: white !important;
+  font-weight: 600;
+  padding: 0 20px;
+  height: 45px;
+  border-radius: 8px;
+}
+
+.btn-create mat-icon {
+  margin-right: 8px;
+}
+
+.btn-create:hover {
+  background-color: #1b5e20 !important;
+}
