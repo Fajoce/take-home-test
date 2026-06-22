@@ -185,7 +185,8 @@ La canalización realiza:
   
  # user: admin
  # password: 123456
-<img width="1346" height="667" alt="image" src="https://github.com/user-attachments/assets/a4df19cd-7d79-47a5-b83b-f1cd4e923a76" />
+<img width="1344" height="667" alt="image" src="https://github.com/user-attachments/assets/b33d2dbd-df94-4eff-ab27-25f1ac7ea5b7" />
+
 
 
 
