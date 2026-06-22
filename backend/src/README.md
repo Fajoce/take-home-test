@@ -185,11 +185,7 @@ La canalización realiza:
   
  # user: admin
  # password: 123456
-<img width="1344" height="667" alt="image" src="https://github.com/user-attachments/assets/b33d2dbd-df94-4eff-ab27-25f1ac7ea5b7" />
-
-
-
-
+<img width="1346" height="674" alt="image" src="https://github.com/user-attachments/assets/602cde63-442c-4f97-ae29-9a06ca07efd1" />
 # Autor
 Fabio Ortiz Charris
 
