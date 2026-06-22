@@ -63,6 +63,7 @@ Swagger:
 ```text
 http://localhost:5000/swagger
 ```
+<img width="1352" height="672" alt="image" src="https://github.com/user-attachments/assets/0fb4cc0c-ba98-40e9-887f-81496b3d2f02" />
 
 ---
 
@@ -183,7 +184,9 @@ La canalización realiza:
   
  # user: admin
  # password: 123456
-<img width="1336" height="671" alt="image" src="https://github.com/user-attachments/assets/4f8ea60d-7f16-43b2-959b-d5fe8911e225" />
+<img width="1346" height="667" alt="image" src="https://github.com/user-attachments/assets/a4df19cd-7d79-47a5-b83b-f1cd4e923a76" />
+
+
 
 # Autor
 Fabio Ortiz Charris
@@ -200,6 +203,7 @@ Con mas tiempo hubiese adicionado:
 - Patron  diseño Polly + Retry
 - Fluent Validations
 - RabbitMQ
+  
 En el front:
 - Control  de estado NGRX
 - CRUD
