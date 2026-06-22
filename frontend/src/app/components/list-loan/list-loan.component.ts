@@ -26,7 +26,9 @@ export class ListLoanComponent implements OnInit {
   loading = true;
 
   displayedColumns: string[] = [
+    'id',
     'amount',
+     'paidAmount',
     'currentBalance',
     'applicantName',
     'status'
@@ -40,6 +42,7 @@ export class ListLoanComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadLoans();
+   
   }
 
   loadLoans(): void {
@@ -52,6 +55,7 @@ export class ListLoanComponent implements OnInit {
         setTimeout(() => {
 
           this.loans = response;
+           console.log(this.loans);
           this.loading = false;
 
         }, 4000);
