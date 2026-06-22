@@ -201,6 +201,7 @@ Con mas tiempo hubiese adicionado:
 - Patron  diseño Polly + Retry
 - Fluent Validations
 - RabbitMQ
+  
 En el front:
 - Control  de estado NGRX
 - CRUD
