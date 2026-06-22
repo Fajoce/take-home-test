@@ -5,9 +5,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Fundo.Applications.WebApi.Controllers
 {
+    /// <summary>
+    /// Gestión de préstamos.
+    /// </summary>
     [Authorize]
     [ApiController]
     [Route("loan")]
@@ -21,6 +26,14 @@ namespace Fundo.Applications.WebApi.Controllers
             _service = service;
         }
 
+        /// <summary>
+        /// Obtiene todos los préstamos.
+        /// </summary>
+        /// <returns>Listado de préstamos.</returns>
+    
+   
+        [ProducesResponseType(typeof(List<Loan>), 200)]
+        [ProducesResponseType(401)]
         [HttpGet]
         public async Task<ActionResult<List<Loan>>> GetAll()
         {
@@ -29,6 +42,13 @@ namespace Fundo.Applications.WebApi.Controllers
             return Ok(loans);
         }
 
+        /// <summary>
+        /// Obtiene un préstamo por id.
+        /// </summary>
+       
+        [ProducesResponseType(typeof(Loan), 200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(401)]
         [HttpGet("{id}")]
         public async Task<ActionResult<Loan>> GetById(
             int id)
@@ -41,6 +61,13 @@ namespace Fundo.Applications.WebApi.Controllers
             return Ok(loan);
         }
 
+        /// <summary>
+        /// Crea un préstamo.
+        /// </summary>
+     
+        [ProducesResponseType(typeof(Loan), 201)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [HttpPost]
         public async Task<ActionResult<Loan>> Create(
             [FromBody] Loan loan)
@@ -53,7 +80,13 @@ namespace Fundo.Applications.WebApi.Controllers
                 result
             );
         }
-
+        /// <summary>
+        /// Aplica un pago a un préstamo.
+        /// </summary>
+ 
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(401)]
         [HttpPost("{id}/payment")]
         public async Task<IActionResult> Payment(
             int id,
