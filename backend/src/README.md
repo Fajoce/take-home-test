@@ -63,7 +63,8 @@ Swagger:
 ```text
 http://localhost:5000/swagger
 ```
-<img width="1352" height="672" alt="image" src="https://github.com/user-attachments/assets/0fb4cc0c-ba98-40e9-887f-81496b3d2f02" />
+<img width="1344" height="687" alt="image" src="https://github.com/user-attachments/assets/581bcec0-68e1-4cee-b8cc-93a5081077cb" />
+
 
 ---
 
