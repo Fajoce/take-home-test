@@ -22,6 +22,13 @@ export class LoanService {
   return this.http.get<Loan>(
     `${this.apiUrl}/${id}`
   );
+}
+create(loan: any): Observable<Loan> {
+
+  return this.http.post<Loan>(
+    this.apiUrl,
+    loan
+  );
 
 }
 }

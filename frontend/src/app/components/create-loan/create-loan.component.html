@@ -1,0 +1,109 @@
+<mat-card class="loan-card">
+
+  <mat-card-header>
+
+    <mat-icon class="header-icon">
+      account_balance
+    </mat-icon>
+
+    <div>
+      <mat-card-title>
+        Crear Préstamo
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        Registre un nuevo préstamo en el sistema
+      </mat-card-subtitle>
+    </div>
+
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <form
+      [formGroup]="form"
+      class="loan-form">
+
+      <mat-form-field
+        appearance="outline"
+        class="full-width">
+
+        <mat-label>
+          Nombre del Solicitante
+        </mat-label>
+
+        <input
+          matInput
+          formControlName="applicantName">
+
+        <mat-icon matSuffix>
+          person
+        </mat-icon>
+
+        <mat-error
+          *ngIf="
+          form.get('applicantName')
+          ?.hasError('required')
+        ">
+          El solicitante es obligatorio
+        </mat-error>
+
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        class="full-width">
+
+        <mat-label>
+          Monto del Préstamo
+        </mat-label>
+
+        <input
+          type="number"
+          matInput
+          formControlName="amount">
+
+        <mat-icon matSuffix>
+          attach_money
+        </mat-icon>
+
+        <mat-error
+          *ngIf="
+          form.get('amount')
+          ?.hasError('required')
+        ">
+          El monto es obligatorio
+        </mat-error>
+
+        <mat-error
+          *ngIf="
+          form.get('amount')
+          ?.hasError('min')
+        ">
+          El monto debe ser mayor a cero
+        </mat-error>
+
+      </mat-form-field>
+
+    </form>
+
+  </mat-card-content>
+  <mat-card-actions align="end">
+ <button
+  mat-stroked-button
+  color="warn"
+  [routerLink]="['/loans']">
+  Cancelar
+</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="form.invalid"
+      (click)="save()">
+      <mat-icon>
+        save
+      </mat-icon>
+      Guardar
+    </button>
+  </mat-card-actions>
+</mat-card>

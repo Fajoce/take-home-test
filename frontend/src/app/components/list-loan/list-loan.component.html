@@ -2,7 +2,18 @@
   <mat-card-title class="title-center">
     <h2>Gestión de Préstamos</h2>
   </mat-card-title>
+<div class="actions-container">
 
+  <button
+    mat-raised-button
+    color="primary"
+    routerLink="/loan/create">
+
+    Nuevo Préstamo
+
+  </button>
+
+</div>
   <mat-card-content>
     <!-- Loading -->
     <div *ngIf="loading" class="loading-container">
