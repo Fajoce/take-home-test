@@ -63,6 +63,7 @@ Swagger:
 ```text
 http://localhost:5000/swagger
 ```
+<img width="1352" height="672" alt="image" src="https://github.com/user-attachments/assets/0fb4cc0c-ba98-40e9-887f-81496b3d2f02" />
 
 ---
 
@@ -183,7 +184,10 @@ La canalización realiza:
   
  # user: admin
  # password: 123456
-  <img width="899" height="626" alt="image" src="https://github.com/user-attachments/assets/212ee9a9-cf4c-4aa3-a2cb-66c0d1078a68" />
+<img width="1346" height="667" alt="image" src="https://github.com/user-attachments/assets/a4df19cd-7d79-47a5-b83b-f1cd4e923a76" />
+
+
+
 # Autor
 Fabio Ortiz Charris
 
@@ -191,11 +195,15 @@ Fabio Ortiz Charris
 Con mas tiempo hubiese adicionado:
 - Todas las entidades relacionadas con el core bancario
 - Patron  diseño Result
-- Agregar bibliotecas de clases para las capas  de dominio, Aplicacion, Infraestructura.
-- Patron  diseño CQRS
+- Agregar bibliotecas de clases para las capas  de dominio, Aplicacion, Infraestructura.(clean Arhitecture)
+- Patron  diseño CQRS (Separar operaciones Lecturas/Esritura)
 - Enfoque DDD
+- Event Driven
+- Patron  diseño Outbox
 - Patron  diseño Polly + Retry
 - Fluent Validations
+- RabbitMQ
+  
 En el front:
 - Control  de estado NGRX
 - CRUD
