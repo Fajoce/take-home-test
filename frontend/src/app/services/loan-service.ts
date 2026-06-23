@@ -29,6 +29,18 @@ create(loan: any): Observable<Loan> {
     this.apiUrl,
     loan
   );
+}
+applyPayment(
+  id: number,
+  amount: number
+) {
+
+  return this.http.post(
+    `${this.apiUrl}/${id}/payment`,
+    {
+      amount
+    }
+  );
 
 }
 }

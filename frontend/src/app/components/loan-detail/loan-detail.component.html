@@ -3,7 +3,18 @@
   class="loan-card">
 
   <mat-card-header>
+<button
+  mat-raised-button
+  color="accent"
+  (click)="openPaymentDialog()">
 
+  <mat-icon>
+    payments
+  </mat-icon>
+
+  Registrar Pago
+
+</button>
     <mat-card-title>
       Préstamo #{{ loan.id }}
     </mat-card-title>

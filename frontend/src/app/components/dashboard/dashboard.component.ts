@@ -21,8 +21,10 @@ export class DashboardComponent {
   totalAmount = 0;
   recoveredAmount = 0;
 
-  constructor(private loanService: LoanService,
-   private  router:Router ) {}
+  constructor(
+    private loanService: LoanService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.loadDashboard();
@@ -44,20 +46,12 @@ export class DashboardComponent {
     });
   }
   goToDashboard(): void {
+    if (this.router.url === '/dashboard') {
+      this.loadDashboard();
 
-  if (
-    this.router.url === '/dashboard'
-  ) {
+      return;
+    }
 
-    this.loadDashboard();
-
-    return;
-
+    this.router.navigate(['/dashboard']);
   }
-
-  this.router.navigate(
-    ['/dashboard']
-  );
-
-}
 }
