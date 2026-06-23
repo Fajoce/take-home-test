@@ -1,213 +1,136 @@
 <mat-card>
-<mat-toolbar color="primary" class="toolbar">
-
-  <div class="toolbar-brand">
-
-    <mat-icon>
-      account_balance
-    </mat-icon>
-
-    <span>
-      Loan Management System
-    </span>
-
-  </div>
-
-  <span class="spacer"></span>
-
-  <button
-    mat-stroked-button
-    class="logout-btn"
-    (click)="logout()">
-
-    <mat-icon>
-      logout
-    </mat-icon>
-
-    Salir
-
-  </button>
-
-</mat-toolbar>
-  <mat-card-title class="title-center">
-    <h2>Gestión de Préstamos</h2>
-  </mat-card-title>
+  <mat-toolbar color="primary" class="toolbar">
+    <div class="toolbar-brand">
+      <mat-icon> account_balance </mat-icon>
+      <span> Loan Management System </span>
+    </div>
+    <span class="spacer"></span>
+    <button mat-stroked-button class="logout-btn" (click)="logout()">
+      <mat-icon> logout </mat-icon>
+      Salir
+    </button>
+  </mat-toolbar>
 
   <div class="actions-container">
+    <button mat-button class="btn-dashboard" routerLink="/dashboard">Dashboard</button>
 
-    <button
-      mat-raised-button
-      class="btn-create"
-      routerLink="/loan/create">
-
+    <button mat-button class="btn-loan" routerLink="/loans">Préstamos</button>
+    <button mat-raised-button class="btn-create" routerLink="/loan/create">
       <mat-icon>add</mat-icon>
-
       Nuevo Préstamo
-
     </button>
-
   </div>
 
   <mat-card-content>
-
     <!-- Loading -->
     <div *ngIf="loading" class="loading-container">
-
       <mat-spinner diameter="60"></mat-spinner>
 
       <p>Cargando préstamos...</p>
-
     </div>
 
     <!-- Tabla -->
     <div [hidden]="loading">
-
       <mat-form-field appearance="outline">
-
-        <mat-label>
-          Buscar solicitante
-        </mat-label>
+        <mat-label> Buscar solicitante </mat-label>
 
         <input
           matInput
           (keyup)="applyFilter($event)"
-          placeholder="Ingrese nombre">
-
+          placeholder="Ingrese nombre"
+        />
       </mat-form-field>
 
       <table
         mat-table
         [dataSource]="dataSource"
-        class="mat-elevation-z8 loans-table">
-
+        class="mat-elevation-z8 loans-table"
+      >
         <!-- ID -->
         <ng-container matColumnDef="id">
-
-          <th mat-header-cell *matHeaderCellDef>
-            Id
-          </th>
+          <th mat-header-cell *matHeaderCellDef>Id</th>
 
           <td mat-cell *matCellDef="let loan">
             {{ loan.id }}
           </td>
-
         </ng-container>
 
         <!-- MONTO -->
         <ng-container matColumnDef="amount">
-
-          <th mat-header-cell *matHeaderCellDef>
-            Monto
-          </th>
+          <th mat-header-cell *matHeaderCellDef>Monto</th>
 
           <td mat-cell *matCellDef="let loan">
             {{ loan.amount | currency }}
           </td>
-
         </ng-container>
 
         <!-- PAGADO -->
         <ng-container matColumnDef="paidAmount">
-
-          <th mat-header-cell *matHeaderCellDef>
-            Pagado
-          </th>
+          <th mat-header-cell *matHeaderCellDef>Pagado</th>
 
           <td mat-cell *matCellDef="let loan">
             {{ loan.amount - loan.currentBalance | currency }}
           </td>
-
         </ng-container>
 
         <!-- SALDO -->
         <ng-container matColumnDef="currentBalance">
-
-          <th mat-header-cell *matHeaderCellDef>
-            Saldo Actual
-          </th>
+          <th mat-header-cell *matHeaderCellDef>Saldo Actual</th>
 
           <td mat-cell *matCellDef="let loan">
             {{ loan.currentBalance | currency }}
           </td>
-
         </ng-container>
 
         <!-- SOLICITANTE -->
         <ng-container matColumnDef="applicantName">
-
-          <th mat-header-cell *matHeaderCellDef>
-            Solicitante
-          </th>
+          <th mat-header-cell *matHeaderCellDef>Solicitante</th>
 
           <td mat-cell *matCellDef="let loan">
             {{ loan.applicantName }}
           </td>
-
         </ng-container>
 
         <!-- ESTADO -->
         <ng-container matColumnDef="status">
-
-          <th mat-header-cell *matHeaderCellDef>
-            Estado
-          </th>
+          <th mat-header-cell *matHeaderCellDef>Estado</th>
 
           <td mat-cell *matCellDef="let loan">
-
             <mat-chip
               [class.active-chip]="loan.status === 0"
-              [class.paid-chip]="loan.status !== 0">
-
+              [class.paid-chip]="loan.status !== 0"
+            >
               {{ getStatus(loan.status) }}
-
             </mat-chip>
-
           </td>
-
         </ng-container>
 
         <!-- ACCIONES -->
         <ng-container matColumnDef="actions">
-
-          <th mat-header-cell *matHeaderCellDef>
-            Acciones
-          </th>
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
 
           <td mat-cell *matCellDef="let loan">
-
             <button
               mat-raised-button
               color="primary"
-              [routerLink]="['/loan', loan.id]">
-
+              [routerLink]="['/loan', loan.id]"
+            >
               Ver
-
             </button>
-
           </td>
-
         </ng-container>
 
-        <tr
-          mat-header-row
-          *matHeaderRowDef="displayedColumns">
-        </tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
-        <tr
-          mat-row
-          *matRowDef="let row; columns: displayedColumns">
-        </tr>
-
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
 
       <mat-paginator
         [pageSize]="5"
         [pageSizeOptions]="[5, 10, 20]"
-        showFirstLastButtons>
+        showFirstLastButtons
+      >
       </mat-paginator>
-
     </div>
-
   </mat-card-content>
-
 </mat-card>

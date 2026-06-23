@@ -146,15 +146,17 @@ mat-card {
   margin: 20px 0;
 }
 
-.btn-create {
-  background: #16a34a !important;
+.btn-create, .btn-dashboard, .btn-loan {
+  background: #4a28e0 !important;
   color: white !important;
   border-radius: 8px;
   height: 45px;
   font-weight: 600;
   padding: 0 20px;
 }
-
+.logout-btn{
+background: #4c16a3 !important;
+}
 .btn-create:hover {
   background: #15803d !important;
 }
@@ -272,3 +274,4 @@ mat-paginator {
   }
 
 }
+

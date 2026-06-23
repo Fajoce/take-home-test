@@ -4,6 +4,7 @@ import { LoginComponentComponent } from './components/login-component/login-comp
 import { LoanDetailComponent } from './components/loan-detail/loan-detail.component';
 import { CreateLoanComponent } from './components/create-loan/create-loan.component';
 import { authGuard } from './guards/auth.guard';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const routes: Routes = [
 
@@ -33,4 +34,9 @@ export const routes: Routes = [
     component: LoanDetailComponent,
      canActivate: [authGuard]
   },
+  {
+  path: 'dashboard',
+  component: DashboardComponent,
+  canActivate: [authGuard]
+}
 ];
