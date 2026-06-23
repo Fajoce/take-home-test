@@ -4,10 +4,10 @@ import {
   AfterViewInit,
   ViewChild
 } from '@angular/core';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
+import { Router } from '@angular/router';
 import {
   MatTableDataSource,
   MatTableModule
@@ -41,7 +41,8 @@ import { LoanService } from '../../services/loan-service';
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+   MatToolbarModule
   ],
   templateUrl: './list-loan.component.html',
   styleUrls: ['./list-loan.component.scss']
@@ -68,7 +69,8 @@ export class ListLoanComponent
   paginator!: MatPaginator;
 
   constructor(
-    private loanService: LoanService
+    private loanService: LoanService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -138,4 +140,8 @@ export class ListLoanComponent
       ? 'Activo'
       : 'Pagado';
   }
+  logout(): void {
+  localStorage.removeItem('token');
+  this.router.navigate(['/login']);
+}
 }

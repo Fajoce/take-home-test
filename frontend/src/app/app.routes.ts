@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { LoginComponentComponent } from './components/login-component/login-component.component';
 import { LoanDetailComponent } from './components/loan-detail/loan-detail.component';
 import { CreateLoanComponent } from './components/create-loan/create-loan.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
 
@@ -19,14 +20,17 @@ export const routes: Routes = [
 
   {
     path: 'loans',
-    component: ListLoanComponent
+    component: ListLoanComponent,
+    canActivate: [authGuard]
   },
     {
   path: 'loan/create',
-  component: CreateLoanComponent
+  component: CreateLoanComponent,
+   canActivate: [authGuard]
 },
     {
     path: 'loan/:id',
-    component: LoanDetailComponent
+    component: LoanDetailComponent,
+     canActivate: [authGuard]
   },
 ];
