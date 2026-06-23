@@ -1,43 +1,30 @@
-<mat-card
-  *ngIf="loan"
-  class="loan-card">
-
+<mat-card *ngIf="loan" class="loan-card">
   <mat-card-header>
-<button
-  mat-raised-button
-  color="accent"
-  (click)="openPaymentDialog()">
+    <button
+      mat-raised-button
+      color="accent"
+      [disabled]="loan.status !== 0 || loan.currentBalance <= 0"
+      (click)="openPaymentDialog()"
+    >
+      <mat-icon> payments </mat-icon>
 
-  <mat-icon>
-    payments
-  </mat-icon>
+      Registrar Pago
+    </button>
+    <mat-card-title> Préstamo #{{ loan.id }} </mat-card-title>
 
-  Registrar Pago
-
-</button>
-    <mat-card-title>
-      Préstamo #{{ loan.id }}
-    </mat-card-title>
-
-    <mat-card-subtitle>
-      Información detallada del préstamo
-    </mat-card-subtitle>
+    <mat-card-subtitle> Información detallada del préstamo </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <div class="loan-info">
       <div class="info-item">
-        <span class="label">
-          Solicitante
-        </span>
+        <span class="label"> Solicitante </span>
         <span class="value">
           {{ loan.applicantName }}
         </span>
       </div>
 
       <div class="info-item">
-        <span class="label">
-          Monto Total
-        </span>
+        <span class="label"> Monto Total </span>
 
         <span class="value">
           {{ loan.amount | currency }}
@@ -45,23 +32,15 @@
       </div>
 
       <div class="info-item">
-        <span class="label">
-          Total Pagado
-        </span>
+        <span class="label"> Total Pagado </span>
 
         <span class="value success">
-          {{
-            loan.amount -
-            loan.currentBalance
-            | currency
-          }}
+          {{ loan.amount - loan.currentBalance | currency }}
         </span>
       </div>
 
       <div class="info-item">
-        <span class="label">
-          Saldo Pendiente
-        </span>
+        <span class="label"> Saldo Pendiente </span>
 
         <span class="value warning">
           {{ loan.currentBalance | currency }}
@@ -69,60 +48,36 @@
       </div>
 
       <div class="info-item">
-        <span class="label">
-          Estado
-        </span>
+        <span class="label"> Estado </span>
 
         <mat-chip
           [class.active-chip]="loan.status === 0"
-          [class.paid-chip]="loan.status !== 0">
-
-          {{
-            loan.status === 0
-              ? 'Activo'
-              : 'Pagado'
-          }}
-
+          [class.paid-chip]="loan.status !== 0"
+        >
+          {{ loan.status === 0 ? "Activo" : "Pagado" }}
         </mat-chip>
-
       </div>
-
     </div>
 
     <h3>Progreso del préstamo</h3>
 
     <mat-progress-bar
       mode="determinate"
-      [value]="
-      ((loan.amount - loan.currentBalance)
-      / loan.amount) * 100">
+      [value]="((loan.amount - loan.currentBalance) / loan.amount) * 100"
+    >
     </mat-progress-bar>
 
     <div class="progress-text">
-
       {{
-      ((loan.amount - loan.currentBalance)
-      / loan.amount) * 100
-      | number:'1.0-0'
-      }}%
-
-      completado
-
+        ((loan.amount - loan.currentBalance) / loan.amount) * 100
+          | number: "1.0-0"
+      }}% completado
     </div>
-
   </mat-card-content>
 
   <mat-card-actions align="end">
-
-    <button
-      mat-stroked-button
-      color="primary"
-      routerLink="/loans">
-
+    <button mat-stroked-button color="primary" routerLink="/loans">
       Volver
-
     </button>
-
   </mat-card-actions>
-
 </mat-card>

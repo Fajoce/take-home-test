@@ -13,10 +13,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 
 import { PaymentDialogComponent } from '../payment-dialog/payment-dialog.component';
 
@@ -36,7 +35,7 @@ import { PaymentDialogComponent } from '../payment-dialog/payment-dialog.compone
     MatProgressBarModule,
     MatIconModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   templateUrl: './loan-detail.component.html',
   styleUrls: ['./loan-detail.component.scss'],
@@ -70,13 +69,15 @@ export class LoanDetailComponent {
   }
 
   openPaymentDialog(): void {
-    console.log('CLICK');
     if (!this.loan) {
       return;
     }
 
     const dialogRef = this.dialog.open(PaymentDialogComponent, {
       width: '400px',
+      data: {
+        currentBalance: this.loan.currentBalance,
+      },
     });
 
     dialogRef.afterClosed().subscribe((amount: number) => {

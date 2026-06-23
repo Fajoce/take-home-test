@@ -3,13 +3,10 @@ import {
   FormBuilder,
   FormGroup,
   Validators,
-  ReactiveFormsModule
+  ReactiveFormsModule,
 } from '@angular/forms';
 
-import {
-  MAT_DIALOG_DATA,
-  MatDialogRef
-} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -25,46 +22,43 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
   ],
-  templateUrl: './payment-dialog.component.html'
+  templateUrl: './payment-dialog.component.html',
 })
 export class PaymentDialogComponent {
-
   form: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    public dialogRef:
-      MatDialogRef<PaymentDialogComponent>,
+    public dialogRef: MatDialogRef<PaymentDialogComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public data: any
+    public data: any,
   ) {
-
     this.form = this.fb.group({
-
       amount: [
         '',
         [
           Validators.required,
-          Validators.min(1)
-        ]
-      ]
-
+          Validators.min(1),
+          Validators.max(this.data.currentBalance),
+        ],
+      ],
     });
-
   }
 
   save(): void {
-
     if (this.form.invalid) {
+      this.form.markAllAsTouched();
       return;
     }
 
-    this.dialogRef.close(
-      this.form.value.amount
-    );
+    const amount = Number(this.form.value.amount);
 
+    if (amount > this.data.currentBalance) {
+      return;
+    }
+
+    this.dialogRef.close(amount);
   }
-
 }

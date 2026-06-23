@@ -2,6 +2,12 @@
 
 <form [formGroup]="form">
   <mat-dialog-content>
+    <div class="balance-info">
+      <strong> Saldo pendiente: </strong>
+
+      {{ data.currentBalance | currency }}
+    </div>
+
     <mat-form-field appearance="outline" class="full-width">
       <mat-label> Monto </mat-label>
 
@@ -13,6 +19,10 @@
 
       <mat-error *ngIf="form.get('amount')?.hasError('min')">
         El monto debe ser mayor a cero
+      </mat-error>
+
+      <mat-error *ngIf="form.get('amount')?.hasError('max')">
+        El pago no puede superar el saldo pendiente
       </mat-error>
     </mat-form-field>
   </mat-dialog-content>
