@@ -5,11 +5,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LoanService } from '../../services/loan-service';
 import { Router } from '@angular/router';
+import { BaseChartDirective } from 'ng2-charts';
+import { ChartConfiguration, ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatIconModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    BaseChartDirective,
+  ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
@@ -42,6 +50,27 @@ export class DashboardComponent {
           (sum, loan) => sum + (loan.amount - loan.currentBalance),
           0,
         );
+        this.pieChartData = {
+          labels: ['Activos', 'Pagados'],
+          datasets: [
+            {
+              data: [this.activeLoans, this.paidLoans],
+            },
+          ],
+        };
+
+        this.barChartData = {
+          labels: ['Prestado', 'Recuperado', 'Pendiente'],
+          datasets: [
+            {
+              data: [
+                this.totalAmount,
+                this.recoveredAmount,
+                this.totalAmount - this.recoveredAmount,
+              ],
+            },
+          ],
+        };
       },
     });
   }
@@ -55,10 +84,27 @@ export class DashboardComponent {
     this.router.navigate(['/dashboard']);
   }
   goToLoans(): void {
+    this.router.navigate(['/loans']);
+  }
+  public pieChartType: ChartType = 'pie';
 
-  this.router.navigate(
-    ['/loans']
-  );
+  public pieChartData: ChartConfiguration<'pie'>['data'] = {
+    labels: ['Activos', 'Pagados'],
+    datasets: [
+      {
+        data: [0, 0],
+      },
+    ],
+  };
 
-}
+  public barChartType: ChartType = 'bar';
+
+  public barChartData: ChartConfiguration<'bar'>['data'] = {
+    labels: ['Prestado', 'Recuperado', 'Pendiente'],
+    datasets: [
+      {
+        data: [0, 0, 0],
+      },
+    ],
+  };
 }

@@ -44,6 +44,19 @@
   </div>
 
   <div class="summary">
+    <div class="charts-container">
+      <mat-card class="chart-card">
+        <h2>Estado de Préstamos</h2>
+
+        <canvas baseChart [data]="pieChartData" [type]="pieChartType"> </canvas>
+      </mat-card>
+
+      <mat-card class="chart-card">
+        <h2>Resumen Financiero</h2>
+
+        <canvas baseChart [data]="barChartData" [type]="barChartType"> </canvas>
+      </mat-card>
+    </div>
     <mat-card>
       <h2>Recuperado</h2>
 
